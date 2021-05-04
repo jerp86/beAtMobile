@@ -8,7 +8,7 @@ export const Container = styled.SafeAreaView`
   flex: 1;
   align-items: center;
   justify-content: space-evenly;
-  paddingHorizontal: ${px(20)}px;
+  padding-horizontal: ${px(20)}px;
 `;
 
 export const Title = styled.Text`
