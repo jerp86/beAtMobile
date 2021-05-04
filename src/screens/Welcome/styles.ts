@@ -1,30 +1,35 @@
 import styled from 'styled-components/native';
+import { Feather } from '@expo/vector-icons';
 
-import { colors } from '../../styles/colors';
 import { px } from '../../utils';
+import { colors, fonts } from '../../styles';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
   align-items: center;
   justify-content: space-evenly;
+  paddingHorizontal: ${px(20)}px;
 `;
 
 export const Title = styled.Text`
+  font-family: ${fonts.heading};
   font-size: ${px(32)}px;
-  font-weight: bold;
   text-align: center;
   color: ${colors.purpleDark};
   margin-top: ${px(38)}px;
+  line-height: ${px(38)}px;
 `;
 
 export const ImageWelcome = styled.Image`
-  width: ${px(292)}px;
-  height: ${px(284)}px;
+  width: ${px(275)}px;
+  height: ${px(275)}px;
+  border-radius: ${px(10)}px;
 `;
 
 export const SubTitle = styled.Text`
-  text-align: center;
+  font-family: ${fonts.text};
   font-size: ${px(18)}px;
+  text-align: center;
   padding-horizontal: ${px(20)}px;
   color: ${colors.purpleDark};
 `;
@@ -39,8 +44,7 @@ export const Button = styled.TouchableOpacity`
   height: ${px(56)}px;
 `;
 
-export const ButtonText = styled.Text`
+export const Icon = styled(Feather)`
   color: ${colors.white};
-  font-size: ${px(24)}px;
-  text-shadow: ${px(1)}px ${px(1)}px ${px(1)}px ${colors.shadowText};
+  font-size: ${px(32)}px;
 `;

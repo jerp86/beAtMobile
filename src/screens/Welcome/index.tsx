@@ -2,8 +2,8 @@ import React from 'react';
 
 import {
   Button,
-  ButtonText,
   Container,
+  Icon,
   ImageWelcome,
   SubTitle,
   Title,
@@ -21,7 +21,7 @@ export const Welcome = () => {
         forma ágil e digital
       </Title>
 
-      <ImageWelcome source={{ uri }} resizeMode="cover" />
+      <ImageWelcome source={{ uri }} resizeMode="contain" />
 
       <SubTitle>
         Ferramentas tecnológicas moduladas {'\n'}
@@ -30,9 +30,7 @@ export const Welcome = () => {
       </SubTitle>
 
       <Button activeOpacity={0.7}>
-        <ButtonText>
-          {'>'}
-        </ButtonText>
+        <Icon name="chevron-right" />
       </Button>
     </Container>
   );
