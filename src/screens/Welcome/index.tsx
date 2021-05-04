@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/core';
 
 import {
   Button,
@@ -12,6 +13,9 @@ import {
 export const Welcome = () => {
   const uri =
     'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Frevistacapitaleconomico.com.br%2Fwp-content%2Fuploads%2F2020%2F12%2Fagrotools-transformacao-digital-750x430.jpg&f=1&nofb=1';
+
+  const { navigate } = useNavigation();
+  const handleStart = () => navigate('UserIdentification');
 
   return (
     <Container>
@@ -29,7 +33,7 @@ export const Welcome = () => {
         para o seu negócio.
       </SubTitle>
 
-      <Button activeOpacity={0.7}>
+      <Button activeOpacity={0.7} onPress={handleStart}>
         <Icon name="chevron-right" />
       </Button>
     </Container>

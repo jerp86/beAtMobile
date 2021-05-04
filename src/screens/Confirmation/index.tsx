@@ -8,7 +8,7 @@ export const Confirmation = () => {
   return (
     <Container>
       <Content>
-        <Emoji>😍️</Emoji>
+        <Emoji>😁️</Emoji>
 
         <Title>Prontinho</Title>
         <SubTitle>
@@ -16,7 +16,7 @@ export const Confirmation = () => {
         </SubTitle>
 
         <Footer>
-          <Button />
+          <Button>Começar</Button>
         </Footer>
       </Content>
     </Container>
