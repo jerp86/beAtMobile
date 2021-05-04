@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
+import { RectButtonProps } from 'react-native-gesture-handler';
 
 import { ButtonText, Container } from './styles';
 
-export const Button = () => {
+interface ButtonProps extends RectButtonProps {
+  children: ReactNode;
+}
+
+export const Button = ({ children, ...rest }: ButtonProps) => {
   return (
-    <Container>
-      <ButtonText>Confirmar</ButtonText>
+    <Container {...rest}>
+      <ButtonText>{children}</ButtonText>
     </Container>
   );
 };
