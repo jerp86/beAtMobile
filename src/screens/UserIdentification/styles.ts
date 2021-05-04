@@ -53,7 +53,8 @@ export const Title = styled.Text`
 
 export const Input = styled.TextInput<Props>`
   border-bottom-width: ${px(1)}px;
-  border-color: ${({ isFocused, isFilled }) => (isFocused || isFilled) ? colors.purple : colors.gray};
+  border-color: ${({ isFocused, isFilled }) =>
+    isFocused || isFilled ? colors.purple : colors.gray};
   color: ${colors.purpleDark};
   width: 100%;
   margin-top: ${px(40)}px;

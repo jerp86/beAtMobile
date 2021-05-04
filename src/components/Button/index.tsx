@@ -5,9 +5,7 @@ import { ButtonText, Container } from './styles';
 export const Button = () => {
   return (
     <Container>
-      <ButtonText>
-        Confirmar
-      </ButtonText>
+      <ButtonText>Confirmar</ButtonText>
     </Container>
   );
 };

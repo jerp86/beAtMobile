@@ -30,13 +30,12 @@ export const UserIdentification = () => {
   const handleInputChange = (value: string) => {
     setIsFilled(!!value);
     setName(value);
-  }
+  };
 
   return (
     <Container>
       <KeyboardContainer
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      >
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <Content>
           <Form>
             <Header>
