@@ -28,8 +28,7 @@ export const Welcome = () => {
       <ImageWelcome source={{ uri }} resizeMode="contain" />
 
       <SubTitle>
-        Ferramentas tecnológicas moduladas {'\n'}
-        que garantem análises na medida certa {'\n'}
+        Ferramentas tecnológicas moduladas que garantem análises na medida certa
         para o seu negócio.
       </SubTitle>
 
