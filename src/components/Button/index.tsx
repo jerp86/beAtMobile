@@ -3,13 +3,18 @@ import { RectButtonProps } from 'react-native-gesture-handler';
 
 import { ButtonText, Container } from './styles';
 
-interface ButtonProps extends RectButtonProps {
+export interface ButtonProps extends RectButtonProps {
   children: ReactNode;
+  inactive?: boolean;
 }
 
-export const Button = ({ children, ...rest }: ButtonProps) => {
+export const Button = ({
+  children,
+  inactive = false,
+  ...rest
+}: ButtonProps) => {
   return (
-    <Container {...rest}>
+    <Container inactive={inactive} {...rest}>
       <ButtonText>{children}</ButtonText>
     </Container>
   );
