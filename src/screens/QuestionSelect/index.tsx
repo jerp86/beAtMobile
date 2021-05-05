@@ -23,6 +23,11 @@ export interface EnvironmentsProps {
 
 export const QuestionSelect = () => {
   const [environments, setEnvironments] = useState<EnvironmentsProps[]>([]);
+  const [environmentSelected, setEnvironmentSelected] = useState('all');
+
+  const handleEnvironmentSelected = (environment: string) => {
+    setEnvironmentSelected(environment);
+  };
 
   useEffect(() => {
     const fetchEnvironment = async () => {
@@ -53,7 +58,11 @@ export const QuestionSelect = () => {
           data={environments}
           keyExtractor={item => String(item.key)}
           renderItem={({ item }) => (
-            <EnvironmentButton>{item.title}</EnvironmentButton>
+            <EnvironmentButton
+              active={item.key === environmentSelected}
+              onPress={() => handleEnvironmentSelected(item.key)}>
+              {item.title}
+            </EnvironmentButton>
           )}
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -68,8 +77,7 @@ const styles = StyleSheet.create({
   environmentList: {
     justifyContent: 'center',
     height: px(40),
-    paddingBottom: px(5),
-    marginLeft: px(32),
-    marginVertical: px(32),
+    paddingHorizontal: px(32),
+    marginVertical: px(24),
   },
 });
