@@ -8,7 +8,7 @@ import { px } from '../../utils';
 
 export const Container = styled(RectButton)<EnvironmentButtonProps>`
   background-color: ${({ active }) =>
-    !active ? colors.purpleLight : colors.purpleDark};
+    !active ? colors.white : colors.purpleDark};
   align-items: center;
   justify-content: center;
   width: ${px(76)}px;
@@ -18,6 +18,6 @@ export const Container = styled(RectButton)<EnvironmentButtonProps>`
 `;
 
 export const Text = styled.Text<EnvironmentButtonProps>`
-  color: ${({ active }) => (!active ? colors.purpleDark : colors.purpleLight)};
+  color: ${({ active }) => (!active ? colors.purpleDark : colors.white)};
   font-family: ${({ active }) => (!active ? fonts.text : fonts.heading)};
 `;
