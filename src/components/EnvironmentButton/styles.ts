@@ -14,7 +14,7 @@ export const Container = styled(RectButton)<EnvironmentButtonProps>`
   width: ${px(76)}px;
   height: ${px(40)}px;
   border-radius: ${px(12)}px;
-  margin-right: ${px(5)}px;
+  margin-horizontal: ${px(5)}px;
 `;
 
 export const Text = styled.Text<EnvironmentButtonProps>`
