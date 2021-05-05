@@ -12,6 +12,7 @@ export const Header = () => {
 
       <ImageHeader
         source={{ uri: 'https://source.unsplash.com/random/?people' }}
+        resizeMode="cover"
       />
     </Container>
   );
