@@ -24,8 +24,11 @@ export const Header = () => {
       </View>
 
       <ImageHeader
-        source={{ uri: 'https://source.unsplash.com/random/?people' }}
-        resizeMode="cover"
+        source={{
+          uri:
+            'https://user-images.githubusercontent.com/54115624/116924489-533e5880-ac2e-11eb-9f5e-535b6ebc51e8.png',
+        }}
+        resizeMode="stretch"
       />
     </Container>
   );

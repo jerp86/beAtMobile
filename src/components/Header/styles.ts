@@ -27,7 +27,6 @@ export const UserName = styled.Text`
 `;
 
 export const ImageHeader = styled.Image`
-  width: ${px(70)}px;
-  height: ${px(70)}px;
-  border-radius: ${px(35)}px;
+  width: ${px(165)}px;
+  height: ${px(65)}px;
 `;
