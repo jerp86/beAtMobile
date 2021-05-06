@@ -26,3 +26,9 @@ export const SubTitle = styled.Text`
   line-height: ${px(20)}px;
   color: ${colors.purpleDark};
 `;
+
+export const Questionnaire = styled.View`
+  flex: 1;
+  justify-content: center;
+  padding-horizontal: ${px(32)}px;
+`;

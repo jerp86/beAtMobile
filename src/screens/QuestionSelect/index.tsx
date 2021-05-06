@@ -1,56 +1,115 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { Alert, FlatList, StyleSheet, View } from 'react-native';
 
-import { Container, HeaderContainer, SubTitle, Title } from './styles';
+import {
+  Container,
+  HeaderContainer,
+  Questionnaire,
+  SubTitle,
+  Title,
+} from './styles';
 
-import { EnvironmentButton, Header } from '../../components';
+import { CardPrimary, EnvironmentButton, Header, Load } from '../../components';
 
 import { px } from '../../utils';
-
-const QUESTIONS_ENVIRONMENTS = {
-  data: [
-    { key: 'living_room', title: 'Sala' },
-    { key: 'bedroom', title: 'Quarto' },
-    { key: 'kitchen', title: 'Cozinha' },
-    { key: 'bathroom', title: 'Banheiro' },
-  ],
-};
-
-export interface EnvironmentsProps {
-  key: string;
-  title: string;
-}
+import {
+  QuestionnaireEnvironmentProps,
+  QuestionnaireProps,
+} from '../../lib/storage';
+import api from '../../services/api';
 
 export const QuestionSelect = () => {
-  const [environments, setEnvironments] = useState<EnvironmentsProps[]>([]);
+  const [environments, setEnvironments] = useState<
+    QuestionnaireEnvironmentProps[]
+  >([]);
   const [environmentSelected, setEnvironmentSelected] = useState('all');
+  const [questionnaires, setQuestionnaires] = useState<QuestionnaireProps[]>(
+    [],
+  );
+  const [filteredQuestionnaire, setFilteredQuestionnaire] = useState<
+    QuestionnaireProps[]
+  >([]);
+  const [loading, setLoading] = useState(true);
 
   const handleEnvironmentSelected = (environment: string) => {
     setEnvironmentSelected(environment);
+
+    if (environmentSelected === 'all') {
+      return setFilteredQuestionnaire(questionnaires);
+    }
+
+    const filtered = questionnaires.filter(
+      questionnaire => questionnaire.environment === environment,
+    );
+
+    setFilteredQuestionnaire(filtered);
+  };
+
+  const fetchQuestionnaires = async () => {
+    try {
+      const params = {
+        _sort: 'title',
+        _order: 'asc',
+      };
+
+      const { data } = await api.get('questionnaires', { params });
+
+      setQuestionnaires(data);
+      setFilteredQuestionnaire(data);
+      setLoading(false);
+    } catch (error) {
+      Alert.alert(
+        'Deu ruim 😢',
+        'Não conseguimos resgatar os questionários 😭',
+      );
+    }
   };
 
   useEffect(() => {
     const fetchEnvironment = async () => {
-      const { data } = await QUESTIONS_ENVIRONMENTS;
-      setEnvironments([
-        {
-          key: 'all',
-          title: 'Todos',
-        },
-        ...data,
-      ]);
+      try {
+        const params = {
+          _sort: 'title',
+          _order: 'asc',
+        };
+
+        const { data } = await api.get('questionnaires_environments', {
+          params,
+        });
+
+        setEnvironments([
+          {
+            key: 'all',
+            title: 'Todos',
+          },
+          ...data,
+        ]);
+      } catch (error) {
+        Alert.alert(
+          'Deu ruim 😢',
+          `Não conseguimos resgatar os questionários 😭\n${error.message}`,
+        );
+      }
     };
 
     fetchEnvironment();
   }, []);
+
+  useEffect(() => {
+    fetchQuestionnaires();
+  }, []);
+
+  if (loading) {
+    return <Load />;
+  }
 
   return (
     <Container>
       <HeaderContainer>
         <Header />
 
-        <Title>De qual ambiente</Title>
-        <SubTitle>você responder o questionário?</SubTitle>
+        <Title>Escolha uma das opções</Title>
+        <SubTitle>para responder o questionário</SubTitle>
       </HeaderContainer>
 
       <View>
@@ -69,6 +128,16 @@ export const QuestionSelect = () => {
           contentContainerStyle={styles.environmentList}
         />
       </View>
+
+      <Questionnaire>
+        <FlatList
+          data={filteredQuestionnaire}
+          keyExtractor={item => String(item.key)}
+          renderItem={({ item }) => <CardPrimary data={item} />}
+          showsVerticalScrollIndicator={false}
+          numColumns={2}
+        />
+      </Questionnaire>
     </Container>
   );
 };
