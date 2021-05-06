@@ -1,7 +1,7 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "poststart": "yarn json-server server.json --host 192.168.15.11 --port 3333 --delay 700",
+    "server": "yarn json-server server.json --host 192.168.15.11 --port 3333 --delay 700",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
