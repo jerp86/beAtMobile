@@ -20,6 +20,7 @@ import {
 } from './styles';
 
 import { Button } from '../../components';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const UserIdentification = () => {
   const [isFocused, setIsFocused] = useState(false);
@@ -39,14 +40,17 @@ export const UserIdentification = () => {
   };
 
   const { navigate } = useNavigation();
-  const handleSubmit = () => {
+
+  const handleSubmit = async () => {
     if (!name) {
       return Alert.alert(
         'Acho que esqueceu alguma coisa!',
         'Me diz como devo te chamar 😅️',
       );
     }
-    navigate('Confirmation');
+
+    await AsyncStorage.setItem('@beAt:user', name);
+    navigate('Confirmation', { name });
   };
 
   return (
