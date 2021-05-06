@@ -1,4 +1,7 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
+import { useRoute } from '@react-navigation/core';
+
 import { Button } from '../../components';
 
 import {
@@ -12,17 +15,48 @@ import {
   TipImage,
   TipText,
 } from './styled';
+import api from '../../services/api';
+import { QuestionnaireEnvironmentProps } from '../../lib/storage';
+
+interface Props {
+  question: {
+    id: string;
+    title: string;
+    userCreated: string;
+    dateCreated: Date;
+    environment: string;
+    questionsId: [string];
+  };
+}
 
 export const QuestionAnswer = () => {
+  const [
+    environmentSelected,
+    setEnvironmentSelected,
+  ] = useState<QuestionnaireEnvironmentProps>();
+
+  const route = useRoute();
+  const { question } = route.params as Props;
+
+  useEffect(() => {
+    async function fetchEnvironment() {
+      const { environment } = question;
+      const response = await api.get(
+        `questionnaires_environments/${environment}`,
+      );
+
+      setEnvironmentSelected(response.data);
+    }
+
+    fetchEnvironment();
+  }, []);
+
   return (
     <Container>
       <Info>
-        <Name>Título</Name>
+        <Name>{question.title}</Name>
 
-        <About>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur
-          saepe molestiae laudantium cupiditate odit modi impedit nisi ratione.
-        </About>
+        <About>{environmentSelected?.info}</About>
       </Info>
 
       <Controller>
