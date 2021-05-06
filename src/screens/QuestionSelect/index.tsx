@@ -95,7 +95,7 @@ export const QuestionSelect = () => {
   };
 
   const handleQuestionnaireSelected = (questionnaire: QuestionnaireProps) => {
-    navigate('QuestionAnswer', questionnaire);
+    navigate('QuestionAnswer', { questionnaire });
   };
 
   useEffect(() => {
@@ -149,13 +149,13 @@ export const QuestionSelect = () => {
       <View>
         <FlatList
           data={environments}
-          keyExtractor={item => String(item.key)}
+          keyExtractor={item => String(item.id)}
           renderItem={({ item }) => (
             <EnvironmentButton
-              active={item.key === environmentSelected}
+              active={item.id === environmentSelected}
               onPress={() => {
-                setEnvironmentSelected(String(item.key));
-                handleEnvironmentSelected(String(item.key));
+                setEnvironmentSelected(String(item.id));
+                handleEnvironmentSelected(String(item.id));
               }}>
               {item.title}
             </EnvironmentButton>
@@ -169,7 +169,7 @@ export const QuestionSelect = () => {
       <Questionnaire>
         <FlatList
           data={filteredQuestionnaire}
-          keyExtractor={item => String(item.key)}
+          keyExtractor={item => String(item.id)}
           renderItem={({ item }) => (
             <CardPrimary
               data={item}

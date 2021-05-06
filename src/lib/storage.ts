@@ -1,17 +1,17 @@
 export interface UserProps {
-  key: string;
+  id: string;
   user: string;
   name: string;
 }
 
 export interface QuestionnaireEnvironmentProps {
-  key: string;
+  id: string;
   title: string;
   info?: string;
 }
 
 export interface QuestionnaireProps {
-  key: string;
+  id: string;
   title: string;
   userCreated: string;
   dateCreated: Date;
@@ -20,12 +20,12 @@ export interface QuestionnaireProps {
 }
 
 export interface QuestionProps {
-  key: string;
+  id: string;
   question: string;
 }
 
 export interface AnswerProps {
-  key: string;
+  id: string;
   questionId: string;
   userId: string;
   dateAnswer: Date;

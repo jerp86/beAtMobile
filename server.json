@@ -1,22 +1,22 @@
 {
   "users": [
-    { "key": 1, "user": "admin", "name": "Company Administrator" },
-    { "key": 2, "user": "jerp", "name": "José Eduardo Rodrigues Pinto" },
-    { "key": 3, "user": "prej", "name": "Pinto Rodrigues Eduardo José" }
+    { "id": 1, "user": "admin", "name": "Company Administrator" },
+    { "id": 2, "user": "jerp", "name": "José Eduardo Rodrigues Pinto" },
+    { "id": 3, "user": "prej", "name": "Pinto Rodrigues Eduardo José" }
   ],
   "questionnaires_environments": [
-    { "key": "brand", "title": "Brand", "info": "Brand, a solução digital completa que assegura o monitoramento dos princípios ESG do campo ao varejo." },
-    { "key": "credit", "title": "Credit", "info": "Credit, a solução digital que viabiliza a digitalização do crédito rural, através do monitoramento de todas as variáveis que afetam as operações de crédito, do setor financeiro ao produtor." },
-    { "key": "insurance", "title": "Insurance", "info": "Insurance, a solução digital que promove a digitalização do seguro agrícola, mitigando riscos e facilitando análises em todo território nacional." },
-    { "key": "materials", "title": "Materiais", "info": "Conecte-se ao nosso território. Aqui você encontra conteúdo Agrotools, conteúdos exclusivos de nossos parceiros e muito mais." },
-    { "key": "safe", "title": "Safe", "info": "Safe a solução digital que garante à gestão da cadeia de suprimentos, mais transparência e compliance socioambiental nas operações rurais." },
-    { "key": "sales", "title": "Sales", "info": "Sales é a solução digital de Business Intelligence para a agroindústria." },
-    { "key": "solutions", "title": "Soluções", "info": "Conheça nossas soluções" },
-    { "key": "supply", "title": "Supply", "info": "Supply é a Solução de inteligência comercial e gestão de supply chain para as empresas que compram matéria-prima de produtores rurais." }
+    { "id": "brand", "title": "Brand", "info": "Brand, a solução digital completa que assegura o monitoramento dos princípios ESG do campo ao varejo." },
+    { "id": "credit", "title": "Credit", "info": "Credit, a solução digital que viabiliza a digitalização do crédito rural, através do monitoramento de todas as variáveis que afetam as operações de crédito, do setor financeiro ao produtor." },
+    { "id": "insurance", "title": "Insurance", "info": "Insurance, a solução digital que promove a digitalização do seguro agrícola, mitigando riscos e facilitando análises em todo território nacional." },
+    { "id": "materials", "title": "Materiais", "info": "Conecte-se ao nosso território. Aqui você encontra conteúdo Agrotools, conteúdos exclusivos de nossos parceiros e muito mais." },
+    { "id": "safe", "title": "Safe", "info": "Safe a solução digital que garante à gestão da cadeia de suprimentos, mais transparência e compliance socioambiental nas operações rurais." },
+    { "id": "sales", "title": "Sales", "info": "Sales é a solução digital de Business Intelligence para a agroindústria." },
+    { "id": "solutions", "title": "Soluções", "info": "Conheça nossas soluções" },
+    { "id": "supply", "title": "Supply", "info": "Supply é a Solução de inteligência comercial e gestão de supply chain para as empresas que compram matéria-prima de produtores rurais." }
   ],
   "questionnaires": [
     {
-      "key": 1,
+      "id": 1,
       "title": "Você sabia que temos, pelo menos, 6 (seis) soluções para o seu negócio? Que tal nos auxiliar em nosso melhoramento contínuo?",
       "userCreated": 1,
       "dateCreated": "05/05/2021",
@@ -24,7 +24,7 @@
       "questionsId": [1, 2, 3, 4]
     },
     {
-      "key": 2,
+      "id": 2,
       "title": "Você sabia que temos Materiais de apoio da Agrotools e nossos parceiros?",
       "userCreated": 1,
       "dateCreated": "05/05/2021",
@@ -32,7 +32,7 @@
       "questionsId": [5, 6]
     },
     {
-      "key": 3,
+      "id": 3,
       "title": "Brand, a solução digital completa que assegura o monitoramento dos princípios ESG do campo ao varejo",
       "userCreated": 1,
       "dateCreated": "05/05/2021",
@@ -41,25 +41,25 @@
     }
   ],
   "questions": [
-    { "key": 1, "question": "Você visita nosso portal com que freqüência?" },
-    { "key": 2, "question": "Você já conhece nossas Soluções?" },
-    { "key": 3, "question": "Já utilizou ou utiliza alguma Solução?" },
-    { "key": 4, "question": "Qual ou quais de nossas Soluções você teve o melhor resultado?" },
-    { "key": 5, "question": "Qual(is) desses materiais de apoio você já consumiu? [Vídeos, White papers, Infográfico, Podcast, By Microsoft]" },
-    { "key": 6, "question": "Qual desses materiais já te auxiliou na descisão de escolha de nossas Soluções?" },
-    { "key": 7, "question": "Você costuma monitorar os riscos socioambientais?" },
-    { "key": 8, "question": "Você monitora a cadeia de suprimentos, do campo ao varejo, em suas operações de compras?" },
-    { "key": 9, "question": "Você utiliza a agenda ESG?" },
-    { "key": 10, "question": "Você protege seu negócio com soluções digitais?" },
-    { "key": 11, "question": "Como você entende o perfil e as complexidades das operações do seu cliente?" },
-    { "key": 12, "question": "Você utiliza algum tipo de B.I. (Business Intelligence?" }
+    { "id": 1, "question": "Você visita nosso portal com que freqüência?" },
+    { "id": 2, "question": "Você já conhece nossas Soluções?" },
+    { "id": 3, "question": "Já utilizou ou utiliza alguma Solução?" },
+    { "id": 4, "question": "Qual ou quais de nossas Soluções você teve o melhor resultado?" },
+    { "id": 5, "question": "Qual(is) desses materiais de apoio você já consumiu? [Vídeos, White papers, Infográfico, Podcast, By Microsoft]" },
+    { "id": 6, "question": "Qual desses materiais já te auxiliou na descisão de escolha de nossas Soluções?" },
+    { "id": 7, "question": "Você costuma monitorar os riscos socioambientais?" },
+    { "id": 8, "question": "Você monitora a cadeia de suprimentos, do campo ao varejo, em suas operações de compras?" },
+    { "id": 9, "question": "Você utiliza a agenda ESG?" },
+    { "id": 10, "question": "Você protege seu negócio com soluções digitais?" },
+    { "id": 11, "question": "Como você entende o perfil e as complexidades das operações do seu cliente?" },
+    { "id": 12, "question": "Você utiliza algum tipo de B.I. (Business Intelligence?" }
   ],
   "answers": [
-    { "key": 1, "questionId": 1, "userId": 2, "dateAnswer": "06/05/2021", "lat": -22.8777, "lon": -48.5179, "answer": "Acho que visito no mínimo 1 vez na semana" },
-    { "key": 2, "questionId": 2, "userId": 2, "dateAnswer": "06/05/2021", "lat": -22.8777, "lon": -48.5179, "answer": "Conheço sim" },
-    { "key": 3, "questionId": 3, "userId": 2, "dateAnswer": "06/05/2021", "lat": -22.8777, "lon": -48.5179, "answer": "Infelizmente ainda não tive a oportunidade" },
-    { "key": 4, "questionId": 4, "userId": 2, "dateAnswer": "06/05/2021", "lat": -22.8777, "lon": -48.5179, "answer": "" },
-    { "key": 5, "questionId": 5, "userId": 3, "dateAnswer": "06/05/2021", "lat": -21.2016, "lon": -50.4303, "answer": "Já vi vários vídeos, que são muito bem produzidos" },
-    { "key": 6, "questionId": 6, "userId": 3, "dateAnswer": "06/05/2021", "lat": -21.2016, "lon": -50.4303, "answer": "O Infográfico me deu um bom norte, e o White papers sanou muitas dúvidas" }
+    { "id": 1, "questionId": 1, "userId": 2, "dateAnswer": "06/05/2021", "lat": -22.8777, "lon": -48.5179, "answer": "Acho que visito no mínimo 1 vez na semana" },
+    { "id": 2, "questionId": 2, "userId": 2, "dateAnswer": "06/05/2021", "lat": -22.8777, "lon": -48.5179, "answer": "Conheço sim" },
+    { "id": 3, "questionId": 3, "userId": 2, "dateAnswer": "06/05/2021", "lat": -22.8777, "lon": -48.5179, "answer": "Infelizmente ainda não tive a oportunidade" },
+    { "id": 4, "questionId": 4, "userId": 2, "dateAnswer": "06/05/2021", "lat": -22.8777, "lon": -48.5179, "answer": "" },
+    { "id": 5, "questionId": 5, "userId": 3, "dateAnswer": "06/05/2021", "lat": -21.2016, "lon": -50.4303, "answer": "Já vi vários vídeos, que são muito bem produzidos" },
+    { "id": 6, "questionId": 6, "userId": 3, "dateAnswer": "06/05/2021", "lat": -21.2016, "lon": -50.4303, "answer": "O Infográfico me deu um bom norte, e o White papers sanou muitas dúvidas" }
   ]
 }
