@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, FlatList, StyleSheet, View } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 
 import {
   ActivityIndicator,
@@ -33,6 +34,8 @@ export const QuestionSelect = () => {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [loadingMore, setLoadingMore] = useState(false);
+
+  const { navigate } = useNavigation();
 
   const handleEnvironmentSelected = (environment: string) => {
     setEnvironmentSelected(environment);
@@ -91,6 +94,10 @@ export const QuestionSelect = () => {
     fetchQuestionnaires();
   };
 
+  const handleQuestionnaireSelected = (questionnaire: QuestionnaireProps) => {
+    navigate('QuestionAnswer', questionnaire);
+  };
+
   useEffect(() => {
     const fetchEnvironment = async () => {
       try {
@@ -123,6 +130,7 @@ export const QuestionSelect = () => {
 
   useEffect(() => {
     fetchQuestionnaires();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {
@@ -162,7 +170,12 @@ export const QuestionSelect = () => {
         <FlatList
           data={filteredQuestionnaire}
           keyExtractor={item => String(item.key)}
-          renderItem={({ item }) => <CardPrimary data={item} />}
+          renderItem={({ item }) => (
+            <CardPrimary
+              data={item}
+              onPress={() => handleQuestionnaireSelected(item)}
+            />
+          )}
           showsVerticalScrollIndicator={false}
           numColumns={2}
           onEndReachedThreshold={0.1}
