@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { Keyboard, Platform, TouchableWithoutFeedback } from 'react-native';
+import {
+  Alert,
+  Keyboard,
+  Platform,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 
 import {
@@ -35,6 +40,12 @@ export const UserIdentification = () => {
 
   const { navigate } = useNavigation();
   const handleSubmit = () => {
+    if (!name) {
+      return Alert.alert(
+        'Acho que esqueceu alguma coisa!',
+        'Me diz como devo te chamar 😅️',
+      );
+    }
     navigate('Confirmation');
   };
 
@@ -61,7 +72,9 @@ export const UserIdentification = () => {
               />
 
               <Footer>
-                <Button onPress={handleSubmit}>Confirmar</Button>
+                <Button inactive={!name} onPress={handleSubmit}>
+                  Confirmar
+                </Button>
               </Footer>
             </Form>
           </Content>
