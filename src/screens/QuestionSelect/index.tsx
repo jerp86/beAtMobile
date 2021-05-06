@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Alert, FlatList, StyleSheet, View } from 'react-native';
 
 import {
+  ActivityIndicator,
   Container,
   HeaderContainer,
   Questionnaire,
@@ -30,11 +31,13 @@ export const QuestionSelect = () => {
     QuestionnaireProps[]
   >([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [loadingMore, setLoadingMore] = useState(false);
 
   const handleEnvironmentSelected = (environment: string) => {
     setEnvironmentSelected(environment);
 
-    if (environmentSelected === 'all') {
+    if (environment === 'all') {
       return setFilteredQuestionnaire(questionnaires);
     }
 
@@ -50,19 +53,42 @@ export const QuestionSelect = () => {
       const params = {
         _sort: 'title',
         _order: 'asc',
+        _page: page,
+        limit: 8,
       };
 
       const { data } = await api.get('questionnaires', { params });
 
-      setQuestionnaires(data);
-      setFilteredQuestionnaire(data);
+      if (!data) {
+        return setLoading(true);
+      }
+
+      if (page > 1) {
+        setQuestionnaires(oldState => [...oldState, ...data]);
+        setFilteredQuestionnaire(oldState => [...oldState, ...data]);
+      } else {
+        setQuestionnaires(data);
+        setFilteredQuestionnaire(data);
+      }
+
       setLoading(false);
+      setLoadingMore(false);
     } catch (error) {
       Alert.alert(
         'Deu ruim 😢',
         'Não conseguimos resgatar os questionários 😭',
       );
     }
+  };
+
+  const handleFetchMore = (distance: number) => {
+    if (distance < 1) {
+      return;
+    }
+
+    setLoadingMore(true);
+    setPage(oldValue => oldValue + 1);
+    fetchQuestionnaires();
   };
 
   useEffect(() => {
@@ -119,7 +145,10 @@ export const QuestionSelect = () => {
           renderItem={({ item }) => (
             <EnvironmentButton
               active={item.key === environmentSelected}
-              onPress={() => handleEnvironmentSelected(item.key)}>
+              onPress={() => {
+                setEnvironmentSelected(String(item.key));
+                handleEnvironmentSelected(String(item.key));
+              }}>
               {item.title}
             </EnvironmentButton>
           )}
@@ -136,6 +165,13 @@ export const QuestionSelect = () => {
           renderItem={({ item }) => <CardPrimary data={item} />}
           showsVerticalScrollIndicator={false}
           numColumns={2}
+          onEndReachedThreshold={0.1}
+          onEndReached={({ distanceFromEnd }) =>
+            handleFetchMore(distanceFromEnd)
+          }
+          ListFooterComponent={
+            loadingMore ? <ActivityIndicator size="large" /> : <></>
+          }
         />
       </Questionnaire>
     </Container>

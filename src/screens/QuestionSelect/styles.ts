@@ -32,3 +32,7 @@ export const Questionnaire = styled.View`
   justify-content: center;
   padding-horizontal: ${px(32)}px;
 `;
+
+export const ActivityIndicator = styled.ActivityIndicator`
+  color: ${colors.purpleDark};
+`;
