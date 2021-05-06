@@ -1,24 +1,23 @@
 import React from 'react';
 import { RectButtonProps } from 'react-native-gesture-handler';
-import { SvgFromUri } from 'react-native-svg';
 
-import { px } from '../../utils';
+import { Container, Text, Title } from './styles';
 
-import { Container, Text } from './styles';
-
-interface QuestionProps extends RectButtonProps {
+interface QuestionnaireProps extends RectButtonProps {
   data: {
-    name: string;
-    photo: string;
+    title: string;
+    questionsId?: [string];
   };
 }
 
-export const CardPrimary = ({ data, ...rest }: QuestionProps) => {
+export const CardPrimary = ({ data, ...rest }: QuestionnaireProps) => {
   return (
     <Container {...rest}>
-      <SvgFromUri uri={data.photo} width={px(70)} height={px(70)} />
+      <Title>
+        {data.title.length < 50 ? data.title : `${data.title.substr(0, 50)}...`}
+      </Title>
 
-      <Text>{data.name}</Text>
+      <Text>{`Há ${data.questionsId?.length ?? 0} perguntas`}</Text>
     </Container>
   );
 };

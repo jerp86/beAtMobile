@@ -7,15 +7,21 @@ import { px } from '../../utils';
 export const Container = styled(RectButton)`
   flex: 1;
   align-items: center;
-  background-color: ${colors.gray};
+  justify-content: space-around;
+  background-color: ${colors.purple};
   max-width: 45%;
   border-radius: ${px(20)}px;
-  padding-vertical: ${px(8)}px;
-  margin: ${px(10)}px;
+  padding: ${px(8)}px;
+  margin: ${px(8)}px;
+`;
+
+export const Title = styled.Text`
+  color: ${colors.gray};
+  font-family: ${fonts.heading};
+  margin-vertical: ${px(8)}px;
 `;
 
 export const Text = styled.Text`
-  color: ${colors.purpleLight};
-  font-family: ${fonts.heading};
-  margin-vertical: ${px(16)}px;
+  color: ${colors.gray};
+  font-family: ${fonts.text};
 `;
