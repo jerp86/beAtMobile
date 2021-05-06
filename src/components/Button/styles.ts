@@ -10,7 +10,7 @@ export const Container = styled(RectButton)<ButtonProps>`
   align-items: center;
   justify-content: center;
   background-color: ${({ inactive }) =>
-    inactive ? colors.purpleDark : colors.purpleLight};
+    inactive ? colors.gray : colors.purpleLight};
   height: ${px(56)}px;
   border-radius: ${px(16)}px;
 `;
