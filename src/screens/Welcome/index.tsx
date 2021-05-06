@@ -18,7 +18,7 @@ export const Welcome = () => {
   const { navigate } = useNavigation();
   const handleStart = async () => {
     const userName = await AsyncStorage.getItem('@beAt:user');
-    console.log({ userName });
+
     if (userName) {
       return navigate('QuestionSelect');
     }
