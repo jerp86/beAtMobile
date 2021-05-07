@@ -5,7 +5,7 @@
     { "id": 3, "user": "prej", "name": "Pinto Rodrigues Eduardo José" }
   ],
   "questionnaires_environments": [
-    { "id": "brand", "title": "Brand", "info": "Brand, a solução digital completa que assegura o monitoramento dos princípios ESG do campo ao varejo." },
+    { "id": "brand", "title": "Brand", "info": "Tenha à sua disposição uma solução digital completa que permite o monitoramento de riscos socioambientais, com processos embargados, garantindo a blindagem reputacional e valorização da sua marca" },
     { "id": "credit", "title": "Credit", "info": "Credit, a solução digital que viabiliza a digitalização do crédito rural, através do monitoramento de todas as variáveis que afetam as operações de crédito, do setor financeiro ao produtor." },
     { "id": "insurance", "title": "Insurance", "info": "Insurance, a solução digital que promove a digitalização do seguro agrícola, mitigando riscos e facilitando análises em todo território nacional." },
     { "id": "materials", "title": "Materiais", "info": "Conecte-se ao nosso território. Aqui você encontra conteúdo Agrotools, conteúdos exclusivos de nossos parceiros e muito mais." },
