@@ -112,7 +112,7 @@ export const QuestionSelect = () => {
 
         setEnvironments([
           {
-            key: 'all',
+            id: 'all',
             title: 'Todos',
           },
           ...data,
