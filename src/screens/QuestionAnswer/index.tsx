@@ -1,25 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useRoute } from '@react-navigation/core';
+import { FlatList, StyleSheet } from 'react-native';
 
-import { Button } from '../../components';
+import { ModalScreen } from '../ModalScreen';
+import { About, Container, Info, Name, TipContainer, TipText } from './styled';
+
+import api from '../../services/api';
+import { px } from '../../utils';
 
 import {
-  About,
-  AlertLabel,
-  Container,
-  Controller,
-  Info,
-  Name,
-  TipContainer,
-  TipImage,
-  TipText,
-} from './styled';
-import api from '../../services/api';
-import { QuestionnaireEnvironmentProps } from '../../lib/storage';
+  QuestionnaireEnvironmentProps,
+  QuestionProps,
+} from '../../lib/storage';
 
 interface Props {
-  question: {
+  questionnaire: {
     id: string;
     title: string;
     userCreated: string;
@@ -30,17 +26,29 @@ interface Props {
 }
 
 export const QuestionAnswer = () => {
+  const [questions, setQuestions] = useState<QuestionProps[]>([]);
+  const [questionSelected, setQuestionSelected] = useState<string>('');
   const [
     environmentSelected,
     setEnvironmentSelected,
   ] = useState<QuestionnaireEnvironmentProps>();
 
   const route = useRoute();
-  const { question } = route.params as Props;
+  const { questionnaire } = route.params as Props;
 
   useEffect(() => {
+    questionnaire.questionsId.map(async id => {
+      const { data } = await api.get(`questions/${id}`);
+
+      if (!questions) {
+        return setQuestions(data);
+      }
+
+      return setQuestions(oldState => [...oldState, data]);
+    });
+
     async function fetchEnvironment() {
-      const { environment } = question;
+      const { environment } = questionnaire;
       const response = await api.get(
         `questionnaires_environments/${environment}`,
       );
@@ -54,27 +62,37 @@ export const QuestionAnswer = () => {
   return (
     <Container>
       <Info>
-        <Name>{question.title}</Name>
+        <Name>{questionnaire.title}</Name>
 
         <About>{environmentSelected?.info}</About>
       </Info>
 
-      <Controller>
-        <TipContainer>
-          <TipImage
-            source={{ uri: 'https://source.unsplash.com/random' }}
-            resizeMode="stretch"
-          />
-
-          <TipText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </TipText>
-        </TipContainer>
-
-        <AlertLabel>Lorem ipsum dolor sit amet consectetur:</AlertLabel>
-
-        <Button onPress={() => console.log('Clicou')}>Salvar Respostas</Button>
-      </Controller>
+      {questions && (
+        <FlatList
+          data={questions}
+          keyExtractor={item => String(item.id)}
+          renderItem={({ item }) => (
+            <TipContainer onPress={() => setQuestionSelected(item.question)}>
+              <TipText>{item.question}</TipText>
+              {item.question === questionSelected && (
+                <ModalScreen
+                  visible={item.question === questionSelected}
+                  question={questionSelected}
+                />
+              )}
+            </TipContainer>
+          )}
+          contentContainerStyle={styles.environmentList}
+        />
+      )}
     </Container>
   );
 };
+
+const styles = StyleSheet.create({
+  environmentList: {
+    justifyContent: 'center',
+    paddingHorizontal: px(32),
+    marginVertical: px(24),
+  },
+});
